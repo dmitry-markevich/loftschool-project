@@ -21,7 +21,7 @@ router.post('/login', textToObject, userCtrl.login);
 router.post('/authFromToken', textToObject, userCtrl.authFromToken);
 router.post('/saveUserImage/:id', isAuth, userCtrl.saveImage);
 
-router.post('/saveNewUser', isAuth, (req, res, next) => {
+router.post('/saveNewUser', (req, res, next) => {
     userCtrl.add(JSON.parse(req.body)).then(user => {
         req.logIn(user, err => {
             if (err) console.log({
